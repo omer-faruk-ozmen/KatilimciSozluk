@@ -21,8 +21,4 @@
     <ProjectReference Include="..\..\Core\KatilimciSozluk.Api.Domain\KatilimciSozluk.Api.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="EntityConfiguration\" />
-  </ItemGroup>
-
 </Project>
