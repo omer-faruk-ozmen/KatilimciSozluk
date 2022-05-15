@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KatilimciSozluk.Api.Domain\KatilimciSozluk.Api.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
