@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KatilimciSozluk.Infrastructure.Persistence.EntityConfiguration;
+namespace KatilimciSozluk.Api.Infrastructure.Persistence.EntityConfiguration;
 
 public abstract class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T> where T : BaseEntity
 {

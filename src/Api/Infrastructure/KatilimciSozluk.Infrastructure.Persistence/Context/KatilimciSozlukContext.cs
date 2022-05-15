@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 using KatilimciSozluk.Api.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace KatilimciSozluk.Infrastructure.Persistence.Context;
+namespace KatilimciSozluk.Api.Infrastructure.Persistence.Context;
 
 internal class KatilimciSozlukContext : DbContext
 {
     public const string DEFAULT_SCHEMA = "dbo";
 
+    public KatilimciSozlukContext()
+    {
+        
+    }
     public KatilimciSozlukContext(DbContextOptions options) : base(options)
     {
 
@@ -28,6 +32,18 @@ internal class KatilimciSozlukContext : DbContext
     public DbSet<EntryCommentFavorite> EntryCommentFavorites { get; set; }
 
     public DbSet<EmailConfirmation> EmailConfirmations { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            var connStr = @"Server=(localdb)\ProjectsV13;Initial Catalog=KatilimciSozlukDb;Persist Security Info=True;";
+            optionsBuilder.UseSqlServer(connStr, opt =>
+            {
+                opt.EnableRetryOnFailure();
+            });
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

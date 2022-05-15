@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KatilimciSozluk.Api.Domain.Models;
-using KatilimciSozluk.Infrastructure.Persistence.Context;
+using KatilimciSozluk.Api.Infrastructure.Persistence.Context;
+using KatilimciSozluk.Infrastructure.Persistence.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KatilimciSozluk.Infrastructure.Persistence.EntityConfiguration;
+namespace KatilimciSozluk.Api.Infrastructure.Persistence.EntityConfiguration;
 
 public class UserEntityConfiguration : BaseEntityConfiguration<User>
 {

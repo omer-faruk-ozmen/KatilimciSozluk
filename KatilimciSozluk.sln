@@ -27,19 +27,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Common", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Api.Domain", "src\Api\Core\KatilimciSozluk.Api.Domain\KatilimciSozluk.Api.Domain.csproj", "{44572956-D9F9-488D-A159-EF49D3E88A32}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Infrastructure.Persistence", "src\Api\Infrastructure\KatilimciSozluk.Infrastructure.Persistence\KatilimciSozluk.Infrastructure.Persistence.csproj", "{F58C4DB8-871C-4A14-9A17-6756628983B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Api.Infrastructure.Persistence", "src\Api\Infrastructure\KatilimciSozluk.Infrastructure.Persistence\KatilimciSozluk.Api.Infrastructure.Persistence.csproj", "{F58C4DB8-871C-4A14-9A17-6756628983B8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Api.WebApi", "src\Api\WebApi\KatilimciSozluk.Api.WebApi\KatilimciSozluk.Api.WebApi.csproj", "{CDB5E936-0BF5-48B8-B298-9DCD0D84FC02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatilimciSozluk.Api.Application", "src\Api\Core\KatilimciSozluk.Api.Application\KatilimciSozluk.Api.Application.csproj", "{12745FDC-8886-4BAF-9B3F-A989372DC4DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Api.Application", "src\Api\Core\KatilimciSozluk.Api.Application\KatilimciSozluk.Api.Application.csproj", "{12745FDC-8886-4BAF-9B3F-A989372DC4DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatilimciSozluk.Projections.FavoriteService", "src\Projections\KatilimciSozluk.Projections.FavoriteService\KatilimciSozluk.Projections.FavoriteService.csproj", "{96A48612-7050-4A02-A3CA-0C39FB190C15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Projections.FavoriteService", "src\Projections\KatilimciSozluk.Projections.FavoriteService\KatilimciSozluk.Projections.FavoriteService.csproj", "{96A48612-7050-4A02-A3CA-0C39FB190C15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatilimciSozluk.Projections.UserService", "src\Projections\KatilimciSozluk.Projections.UserService\KatilimciSozluk.Projections.UserService.csproj", "{A592FF35-01F1-4191-979A-34E3DFCEDE2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Projections.UserService", "src\Projections\KatilimciSozluk.Projections.UserService\KatilimciSozluk.Projections.UserService.csproj", "{A592FF35-01F1-4191-979A-34E3DFCEDE2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatilimciSozluk.Projections.VoreService", "src\Projections\KatilimciSozluk.Projections.VoreService\KatilimciSozluk.Projections.VoreService.csproj", "{2DA5E73F-B0A1-4CE5-8FB7-DBDE25B09742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Projections.VoreService", "src\Projections\KatilimciSozluk.Projections.VoreService\KatilimciSozluk.Projections.VoreService.csproj", "{2DA5E73F-B0A1-4CE5-8FB7-DBDE25B09742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatilimciSozluk.WebApp", "src\Clients\BlazorWeb\KatilimciSozluk.WebApp\KatilimciSozluk.WebApp.csproj", "{76B7B428-FBD1-4FB5-9A56-A6836004E324}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.WebApp", "src\Clients\BlazorWeb\KatilimciSozluk.WebApp\KatilimciSozluk.WebApp.csproj", "{76B7B428-FBD1-4FB5-9A56-A6836004E324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

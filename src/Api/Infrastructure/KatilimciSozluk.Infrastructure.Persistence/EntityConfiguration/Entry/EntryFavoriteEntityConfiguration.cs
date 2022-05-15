@@ -1,9 +1,10 @@
 ﻿using KatilimciSozluk.Api.Domain.Models;
-using KatilimciSozluk.Infrastructure.Persistence.Context;
+using KatilimciSozluk.Api.Infrastructure.Persistence.Context;
+using KatilimciSozluk.Api.Infrastructure.Persistence.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KatilimciSozluk.Infrastructure.Persistence.EntityConfiguration.Entry;
+namespace KatilimciSozluk.Api.Infrastructure.Persistence.EntityConfiguration.Entry;
 
 public class EntryFavoriteEntityConfiguration : BaseEntityConfiguration<EntryFavorite>
 {

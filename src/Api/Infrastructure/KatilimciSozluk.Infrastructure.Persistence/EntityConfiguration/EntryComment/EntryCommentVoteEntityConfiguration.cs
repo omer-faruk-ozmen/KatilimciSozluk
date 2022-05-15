@@ -1,9 +1,9 @@
 ﻿using KatilimciSozluk.Api.Domain.Models;
-using KatilimciSozluk.Infrastructure.Persistence.Context;
+using KatilimciSozluk.Api.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KatilimciSozluk.Infrastructure.Persistence.EntityConfiguration.EntryComment;
+namespace KatilimciSozluk.Api.Infrastructure.Persistence.EntityConfiguration.EntryComment;
 
 public class EntryCommentVoteEntityConfiguration : BaseEntityConfiguration<EntryCommentVote>
 {
