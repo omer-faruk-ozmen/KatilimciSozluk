@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KatilimciSozluk.Api.Application.Interfaces.Repositories
+namespace KatilimciSozluk.Api.Application.Interfaces.Repositories;
+
+public interface IUserRepository:IGenericRepository<User>
 {
-    public interface IUserRepository:IGenericRepository<User>
-    {
-        
-    }
+    
 }

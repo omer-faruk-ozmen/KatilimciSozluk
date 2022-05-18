@@ -8,19 +8,18 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KatilimciSozluk.Api.Application.Extensions
+namespace KatilimciSozluk.Api.Application.Extensions;
+
+public static class Registration
 {
-    public static class Registration
+    public static IServiceCollection AddApplicationRegistration(this IServiceCollection services)
     {
-        public static IServiceCollection AddApplicationRegistration(this IServiceCollection services)
-        {
-            var assm = Assembly.GetExecutingAssembly();
+        var assm = Assembly.GetExecutingAssembly();
 
-            services.AddMediatR(assm);
-            services.AddAutoMapper(assm);
-            services.AddValidatorsFromAssembly(assm);
+        services.AddMediatR(assm);
+        services.AddAutoMapper(assm);
+        services.AddValidatorsFromAssembly(assm);
 
-            return services;
-        }
+        return services;
     }
 }

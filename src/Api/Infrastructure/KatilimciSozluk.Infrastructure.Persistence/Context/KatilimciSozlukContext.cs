@@ -9,18 +9,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KatilimciSozluk.Api.Infrastructure.Persistence.Context;
 
-internal class KatilimciSozlukContext : DbContext
+public class KatilimciSozlukContext : DbContext
 {
     public const string DEFAULT_SCHEMA = "dbo";
 
     public KatilimciSozlukContext()
     {
-        
-    }
-    public KatilimciSozlukContext(DbContextOptions options) : base(options)
-    {
 
     }
+
+    public KatilimciSozlukContext(DbContextOptions options) : base(options)
+    {
+    }
+
     public DbSet<User> Users { get; set; }
     public DbSet<Entry> Entries { get; set; }
 
@@ -33,18 +34,18 @@ internal class KatilimciSozlukContext : DbContext
 
     public DbSet<EmailConfirmation> EmailConfirmations { get; set; }
 
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
         {
-            var connStr = @"Server=(localdb)\ProjectsV13;Initial Catalog=KatilimciSozlukDb;Persist Security Info=True;";
+            var connStr = "Data Source=localhost;Initial Catalog=YoutubeBlazorsozluk;Persist Security Info=True;User ID=sa;Password=Salih123!";
             optionsBuilder.UseSqlServer(connStr, opt =>
             {
                 opt.EnableRetryOnFailure();
             });
         }
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
@@ -62,7 +63,12 @@ internal class KatilimciSozlukContext : DbContext
         return base.SaveChanges(acceptAllChangesOnSuccess);
     }
 
-    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+    {
+        OnBeforeSave();
+        return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+    }
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         OnBeforeSave();
         return base.SaveChangesAsync(cancellationToken);
@@ -70,10 +76,11 @@ internal class KatilimciSozlukContext : DbContext
 
     private void OnBeforeSave()
     {
-        var addedEntities = ChangeTracker.Entries()
-            .Where(i => i.State == EntityState.Added)
-            .Select(i => (BaseEntity)i.Entity);
-        PrepareAddedEntities(addedEntities);
+        var addedEntites = ChangeTracker.Entries()
+                                .Where(i => i.State == EntityState.Added)
+                                .Select(i => (BaseEntity)i.Entity);
+
+        PrepareAddedEntities(addedEntites);
     }
 
     private void PrepareAddedEntities(IEnumerable<BaseEntity> entities)

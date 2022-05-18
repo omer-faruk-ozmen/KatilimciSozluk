@@ -1,14 +1,14 @@
-﻿using System;
+﻿using KatilimciSozluk.Api.Application.Interfaces.Repositories;
+using KatilimciSozluk.Api.Infrastructure.Persistence.Repositories;
+using KatilimciSozluk.Api.Infrastructure.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KatilimciSozluk.Api.Application.Interfaces.Repositories;
-using KatilimciSozluk.Api.Infrastructure.Persistence.Context;
-using KatilimciSozluk.Api.Infrastructure.Persistence.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace KatilimciSozluk.Api.Infrastructure.Persistence.Extensions;
 
