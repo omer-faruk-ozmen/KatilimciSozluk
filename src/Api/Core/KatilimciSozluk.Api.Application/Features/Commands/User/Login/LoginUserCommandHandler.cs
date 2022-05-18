@@ -15,7 +15,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KatilimciSozluk.Api.Application.Features.Commands.User;
+namespace KatilimciSozluk.Api.Application.Features.Commands.User.Login;
 public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUserViewModel>
 {
     private readonly IUserRepository userRepository;

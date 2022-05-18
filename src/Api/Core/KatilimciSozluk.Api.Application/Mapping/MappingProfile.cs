@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using KatilimciSozluk.Api.Domain.Models;
+using KatilimciSozluk.Common.Models.RequestModels;
 using KatilimciSozluk.Common.ViewModels.Queries;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace KatilimciSozluk.Api.Application.Mapping
         {
             CreateMap<User, LoginUserViewModel>()
                 .ReverseMap();
-
+            CreateMap<CreateUserCommand, User>();
+            CreateMap<UpdateUserCommand, User>();
         }
     }
 }
