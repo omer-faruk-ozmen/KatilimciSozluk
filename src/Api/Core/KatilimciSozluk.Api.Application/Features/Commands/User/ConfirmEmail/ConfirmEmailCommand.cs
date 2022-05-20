@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace KatilimciSozluk.Api.Application.Features.Commands.User.ConfirmEmail
 {
-    internal class ConfirmEmailCommand
+    public class ConfirmEmailCommand:IRequest<bool>
     {
+        public Guid ConfirmationId { get; set; }
+
     }
 }

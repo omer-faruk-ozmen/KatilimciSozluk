@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Projections
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Projections.UserService", "src\Projections\KatilimciSozluk.Projections.UserService\KatilimciSozluk.Projections.UserService.csproj", "{A592FF35-01F1-4191-979A-34E3DFCEDE2F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Projections.VoreService", "src\Projections\KatilimciSozluk.Projections.VoreService\KatilimciSozluk.Projections.VoreService.csproj", "{2DA5E73F-B0A1-4CE5-8FB7-DBDE25B09742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Projections.VoteService", "src\Projections\KatilimciSozluk.Projections.VoreService\KatilimciSozluk.Projections.VoteService.csproj", "{2DA5E73F-B0A1-4CE5-8FB7-DBDE25B09742}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.WebApp", "src\Clients\BlazorWeb\KatilimciSozluk.WebApp\KatilimciSozluk.WebApp.csproj", "{76B7B428-FBD1-4FB5-9A56-A6836004E324}"
 EndProject
