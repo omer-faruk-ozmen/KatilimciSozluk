@@ -1,4 +1,6 @@
-﻿using KatilimciSozluk.Common.Models.RequestModels;
+﻿using KatilimciSozluk.Api.Application.Features.Queries.GetEntries;
+using KatilimciSozluk.Api.Application.Features.Queries.GetMainPageEntries;
+using KatilimciSozluk.Common.Models.RequestModels;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +16,22 @@ namespace KatilimciSozluk.Api.WebApi.Controllers
         public EntryController(IMediator mediator)
         {
             this.mediator = mediator;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetEntries([FromQuery] GetEntriesQuery query)
+        {
+            var entries = await mediator.Send(query);
+
+            return Ok(entries);
+        }
+        [HttpGet]
+        [Route("MainPageEntries")]
+        public async Task<IActionResult> GetMainPageEntries(int page,int pageSize)
+        {
+            var entries = await mediator.Send(new GetMainPageEntriesQuery(userId:UserId,page:page,pageSize:pageSize));
+
+            return Ok(entries);
         }
 
         [HttpPost]
