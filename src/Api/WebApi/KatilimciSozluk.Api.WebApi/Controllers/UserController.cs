@@ -1,4 +1,5 @@
 ﻿using KatilimciSozluk.Api.Application.Features.Commands.User.ConfirmEmail;
+using KatilimciSozluk.Api.Application.Features.Queries.GetUserDetail;
 using KatilimciSozluk.Common.Events.User;
 using KatilimciSozluk.Common.Models.RequestModels;
 using KatilimciSozluk.Common.ViewModels.RequestModels;
@@ -18,6 +19,24 @@ namespace KatilimciSozluk.Api.WebApi.Controllers
         {
             this.mediator = mediator;
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var user = await mediator.Send(new GetUserDetailQuery(id));
+
+            return Ok(user);
+        }
+
+        [HttpGet]
+        [Route("UserName/{userName}")]
+        public async Task<IActionResult> GetByUserName(string userName)
+        {
+            var user = await mediator.Send(new GetUserDetailQuery(Guid.Empty, userName));
+
+            return Ok(user);
+        }
+
 
         [HttpPost]
         [Route("Login")]
