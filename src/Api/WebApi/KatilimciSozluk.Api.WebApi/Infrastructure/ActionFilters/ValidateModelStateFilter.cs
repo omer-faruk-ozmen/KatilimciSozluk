@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace KatilimciSozluk.Api.WebApi;
+namespace KatilimciSozluk.Api.WebApi.Infrastructure.ActionFilters;
 public class ValidateModelStateFilter : IAsyncActionFilter
 {
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
