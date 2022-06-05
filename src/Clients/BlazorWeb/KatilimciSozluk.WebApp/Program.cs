@@ -10,13 +10,11 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 
-var defaultUri = builder.Configuration["DefaultUri"];
 
 builder.Services.AddHttpClient("WebApiClient", client =>
 {
-    client.BaseAddress = new Uri(defaultUri);
-}); //TODO AuthTokenHandler will be here
-
+    client.BaseAddress = new Uri("https://localhost:5001");
+}); // TODO AuthTokenHandler will be here
 
 builder.Services.AddScoped(sp =>
 {
@@ -24,17 +22,13 @@ builder.Services.AddScoped(sp =>
     return clientFactory.CreateClient("WebApiClient");
 });
 
-
-builder.Services.AddTransient<IVoteService, VoteService>();
 builder.Services.AddTransient<IEntryService, EntryService>();
+builder.Services.AddTransient<IVoteService, VoteService>();
 builder.Services.AddTransient<IFavService, FavService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IIdentityService, IdentityService>();
 
 
-//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
 builder.Services.AddBlazoredLocalStorage();
-
 
 await builder.Build().RunAsync();
