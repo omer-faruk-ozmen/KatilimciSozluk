@@ -232,3 +232,7 @@ label {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+    .sidebar-heading {
+        background: #474747
+    }

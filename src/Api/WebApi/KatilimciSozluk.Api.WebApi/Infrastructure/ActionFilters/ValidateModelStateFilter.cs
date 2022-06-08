@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using KatilimciSozluk.Api.WebApi.Infrastructure.Results;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace KatilimciSozluk.Api.WebApi.Infrastructure.ActionFilters;
 public class ValidateModelStateFilter : IAsyncActionFilter
@@ -13,7 +15,9 @@ public class ValidateModelStateFilter : IAsyncActionFilter
                                                     .Distinct().ToList();
 
 
-            return;
+            var result = new ValidationResponseModel(messages);
+            context.Result = new BadRequestObjectResult(result);
+            return ;
         }
 
         await next();

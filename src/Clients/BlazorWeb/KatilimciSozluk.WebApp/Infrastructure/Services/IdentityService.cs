@@ -9,19 +9,23 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using KatilimciSozluk.Common.ViewModels.Queries;
 using KatilimciSozluk.Common.ViewModels.RequestModels;
+using KatilimciSozluk.WebApp.Infrastructure.Auth;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace KatilimciSozluk.WebApp.Infrastructure.Services
 {
     public class IdentityService : IIdentityService
     {
-        private readonly HttpClient httpClient;
-        private readonly ISyncLocalStorageService syncLocalStorageService;
+        private readonly HttpClient _httpClient;
+        private readonly ISyncLocalStorageService _syncLocalStorageService;
+        private readonly AuthenticationStateProvider _authenticationStateProvider;
 
 
-        public IdentityService(HttpClient httpClient, ISyncLocalStorageService syncLocalStorageService)
+        public IdentityService(HttpClient httpClient, ISyncLocalStorageService syncLocalStorageService, AuthenticationStateProvider authenticationStateProvider)
         {
-            this.httpClient = httpClient;
-            this.syncLocalStorageService = syncLocalStorageService;
+            this._httpClient = httpClient;
+            this._syncLocalStorageService = syncLocalStorageService;
+            this._authenticationStateProvider = authenticationStateProvider;
         }
 
 
@@ -29,23 +33,23 @@ namespace KatilimciSozluk.WebApp.Infrastructure.Services
 
         public string GetUserToken()
         {
-            return syncLocalStorageService.GetToken();
+            return _syncLocalStorageService.GetToken();
         }
 
         public string GetUserName()
         {
-            return syncLocalStorageService.GetToken();
+            return _syncLocalStorageService.GetToken();
         }
 
         public Guid GetUserId()
         {
-            return syncLocalStorageService.GetUserId();
+            return _syncLocalStorageService.GetUserId();
         }
 
         public async Task<bool> Login(LoginUserCommand command)
         {
-            string responseStr;
-            var httpResponse = await httpClient.PostAsJsonAsync("/api/User/Login", command);
+            string? responseStr;
+            var httpResponse = await _httpClient.PostAsJsonAsync("/api/User/Login", command);
 
             if (httpResponse != null && !httpResponse.IsSuccessStatusCode)
             {
@@ -53,7 +57,7 @@ namespace KatilimciSozluk.WebApp.Infrastructure.Services
                 {
                     responseStr = await httpResponse.Content.ReadAsStringAsync();
                     var validation = JsonSerializer.Deserialize<ValidationResponseModel>(responseStr);
-                    responseStr = validation.FlattenErrors;
+                    responseStr = validation?.FlattenErrors;
                     throw new DatabaseValidationException(responseStr);
                 }
 
@@ -66,14 +70,14 @@ namespace KatilimciSozluk.WebApp.Infrastructure.Services
 
             if (!string.IsNullOrEmpty(response.Token)) // login success
             {
-                syncLocalStorageService.SetToken(response.Token);
-                syncLocalStorageService.SetUsername(response.UserName);
-                syncLocalStorageService.SetUserId(response.Id);
+                _syncLocalStorageService.SetToken(response.Token);
+                _syncLocalStorageService.SetUsername(response.UserName);
+                _syncLocalStorageService.SetUserId(response.Id);
 
                 //TODO Check after auth
-                //((AuthStateProvider)authStateProvider).NotifyUserLogin(response.UserName, response.Id);
+                ((AuthStateProvider)_authenticationStateProvider).NotifyUserLogin(response.UserName, response.Id);
 
-                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("bearer", response.UserName);
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("bearer", response.UserName);
 
                 return true;
             }
@@ -83,13 +87,13 @@ namespace KatilimciSozluk.WebApp.Infrastructure.Services
 
         public void Logout()
         {
-            syncLocalStorageService.RemoveItem(LocalStorageExtension.TokenName);
-            syncLocalStorageService.RemoveItem(LocalStorageExtension.UserName);
-            syncLocalStorageService.RemoveItem(LocalStorageExtension.UserId);
+            _syncLocalStorageService.RemoveItem(LocalStorageExtension.TokenName);
+            _syncLocalStorageService.RemoveItem(LocalStorageExtension.UserName);
+            _syncLocalStorageService.RemoveItem(LocalStorageExtension.UserId);
 
             // TODO Check after auth
-            //((AuthStateProvider)authStateProvider).NotifyUserLogout();
-            httpClient.DefaultRequestHeaders.Authorization = null;
+            ((AuthStateProvider)_authenticationStateProvider).NotifyUserLogout();
+            _httpClient.DefaultRequestHeaders.Authorization = null;
         }
     }
 }

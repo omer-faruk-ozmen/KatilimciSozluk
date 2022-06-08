@@ -1,7 +1,9 @@
 using Blazored.LocalStorage;
 using KatilimciSozluk.WebApp;
+using KatilimciSozluk.WebApp.Infrastructure.Auth;
 using KatilimciSozluk.WebApp.Infrastructure.Services;
 using KatilimciSozluk.WebApp.Infrastructure.Services.Interfaces;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -28,7 +30,10 @@ builder.Services.AddTransient<IFavService, FavService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IIdentityService, IdentityService>();
 
+builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
 
 builder.Services.AddBlazoredLocalStorage();
+
+builder.Services.AddAuthorizationCore();
 
 await builder.Build().RunAsync();
