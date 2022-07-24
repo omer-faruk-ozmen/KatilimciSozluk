@@ -10,7 +10,7 @@ namespace KatilimciSozluk.Api.WebApi.Infrastructure.Extensions
         public static IApplicationBuilder ConfigureExceptionHandling(this IApplicationBuilder app,
             bool includeExceptionDetails = false,
             bool useDefaultHandlingResponse = true,
-            Func<HttpContext, Exception, Task> handleException = null)
+            Func<HttpContext, Exception, Task> handleException = null!)
         {
             app.UseExceptionHandler(options =>
             {
@@ -23,9 +23,9 @@ namespace KatilimciSozluk.Api.WebApi.Infrastructure.Extensions
                             $"{nameof(handleException)} cannot be null when {nameof(useDefaultHandlingResponse)} is false");
 
                     if (!useDefaultHandlingResponse && handleException != null)
-                        return handleException(context, exceptionObject.Error);
+                        return handleException(context, exceptionObject!.Error);
 
-                    return DefaultHandleException(context, exceptionObject.Error, includeExceptionDetails);
+                    return DefaultHandleException(context, exceptionObject!.Error, includeExceptionDetails);
                 });
             });
 

@@ -23,7 +23,7 @@ namespace KatilimciSozluk.Api.WebApi.Controllers
         [Route("Entry/{entryId}")]
         public async Task<IActionResult> CreateEntryVote(Guid entryId, VoteType voteType = VoteType.UpVote)
         {
-            var result = await mediator.Send(new CreateEntryVoteCommand(entryId, voteType, UserId.Value));
+            var result = await mediator.Send(new CreateEntryVoteCommand(entryId, voteType, UserId!.Value));
 
             return Ok(result);
         }
@@ -32,7 +32,7 @@ namespace KatilimciSozluk.Api.WebApi.Controllers
         [Route("EntryComment/{entryCommentId}")]
         public async Task<IActionResult> CreateEntryCommentVote(Guid entryCommentId, VoteType voteType = VoteType.UpVote)
         {
-            var result = await mediator.Send(new CreateEntryCommentVoteCommand(entryCommentId, voteType, UserId.Value));
+            var result = await mediator.Send(new CreateEntryCommentVoteCommand(entryCommentId, voteType, UserId!.Value));
 
             return Ok(result);
         }
@@ -41,7 +41,7 @@ namespace KatilimciSozluk.Api.WebApi.Controllers
         [Route("DeleteEntryVote/{entryId}")]
         public async Task<IActionResult> DeleteEntryVote(Guid entryId)
         {
-            await mediator.Send(new DeleteEntryVoteCommand(entryId, UserId.Value));
+            await mediator.Send(new DeleteEntryVoteCommand(entryId, UserId!.Value));
 
             return Ok();
         }
@@ -50,7 +50,7 @@ namespace KatilimciSozluk.Api.WebApi.Controllers
         [Route("DeleteEntryCommentVote/{entryId}")]
         public async Task<IActionResult> DeleteEntryCommentVote(Guid entryCommentId)
         {
-            await mediator.Send(new DeleteEntryCommentVoteCommand(entryCommentId, UserId.Value));
+            await mediator.Send(new DeleteEntryCommentVoteCommand(entryCommentId, UserId!.Value));
 
             return Ok();
         }

@@ -19,7 +19,7 @@ public static class Registration
         services.AddDbContext<KatilimciSozlukContext>(conf =>
         {
            
-            conf.UseSqlServer(@"Server=(localdb)\ProjectsV13;Initial Catalog=KatilimciSozlukDb;Persist Security Info=True;", opt =>
+            conf.UseSqlServer(configuration.GetConnectionString("KatilimciSozlukDb"), opt =>
             {
                 opt.EnableRetryOnFailure();
             });

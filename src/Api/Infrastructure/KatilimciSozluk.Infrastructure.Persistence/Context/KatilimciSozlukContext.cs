@@ -6,12 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using KatilimciSozluk.Api.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace KatilimciSozluk.Api.Infrastructure.Persistence.Context;
 
 public class KatilimciSozlukContext : DbContext
 {
     public const string DEFAULT_SCHEMA = "dbo";
+    private readonly IConfiguration _configuration;
 
     public KatilimciSozlukContext()
     {
@@ -22,24 +24,25 @@ public class KatilimciSozlukContext : DbContext
     {
     }
 
-    public DbSet<User> Users { get; set; }
-    public DbSet<Entry> Entries { get; set; }
+    public DbSet<User> Users { get; set; } = null!;
+    public DbSet<Entry> Entries { get; set; } = null!;
 
-    public DbSet<EntryVote> EntryVotes { get; set; }
-    public DbSet<EntryFavorite> EntryFavorites { get; set; }
+    public DbSet<EntryVote> EntryVotes { get; set; } = null!;
+    public DbSet<EntryFavorite> EntryFavorites { get; set; } = null!;
 
-    public DbSet<EntryComment> EntryComments { get; set; }
-    public DbSet<EntryCommentVote> EntryCommentVotes { get; set; }
-    public DbSet<EntryCommentFavorite> EntryCommentFavorites { get; set; }
+    public DbSet<EntryComment> EntryComments { get; set; } = null!;
+    public DbSet<EntryCommentVote> EntryCommentVotes { get; set; } = null!;
+    public DbSet<EntryCommentFavorite> EntryCommentFavorites { get; set; } = null!;
 
-    public DbSet<EmailConfirmation> EmailConfirmations { get; set; }
+    public DbSet<EmailConfirmation> EmailConfirmations { get; set; } = null!;
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
         {
-            var connStr = "Data Source=localhost;Initial Catalog=YoutubeBlazorsozluk;Persist Security Info=True;User ID=sa;Password=Salih123!";
+             
+            var connStr = _configuration.GetConnectionString("KatilimciSozlukDb");
             optionsBuilder.UseSqlServer(connStr, opt =>
             {
                 opt.EnableRetryOnFailure();

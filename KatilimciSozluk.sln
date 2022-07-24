@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32414.318
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F1C342BA-0E75-4C79-982C-60066D595A7E}"
 EndProject
@@ -21,8 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{592FAFEE-1123-4D8F-BA5D-8EBAE514B243}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorWeb", "BlazorWeb", "{9951BA46-5A4D-4283-8083-4ACEDEB01714}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Common", "src\Common\KatilimciSozluk.Common\KatilimciSozluk.Common.csproj", "{0387B76E-0CD9-41C3-B125-5AC782A4355B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Api.Domain", "src\Api\Core\KatilimciSozluk.Api.Domain\KatilimciSozluk.Api.Domain.csproj", "{44572956-D9F9-488D-A159-EF49D3E88A32}"
@@ -38,8 +36,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Projections.UserService", "src\Projections\KatilimciSozluk.Projections.UserService\KatilimciSozluk.Projections.UserService.csproj", "{A592FF35-01F1-4191-979A-34E3DFCEDE2F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.Projections.VoteService", "src\Projections\KatilimciSozluk.Projections.VoreService\KatilimciSozluk.Projections.VoteService.csproj", "{2DA5E73F-B0A1-4CE5-8FB7-DBDE25B09742}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KatilimciSozluk.WebApp", "src\Clients\BlazorWeb\KatilimciSozluk.WebApp\KatilimciSozluk.WebApp.csproj", "{76B7B428-FBD1-4FB5-9A56-A6836004E324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,10 +75,6 @@ Global
 		{2DA5E73F-B0A1-4CE5-8FB7-DBDE25B09742}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DA5E73F-B0A1-4CE5-8FB7-DBDE25B09742}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DA5E73F-B0A1-4CE5-8FB7-DBDE25B09742}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76B7B428-FBD1-4FB5-9A56-A6836004E324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76B7B428-FBD1-4FB5-9A56-A6836004E324}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76B7B428-FBD1-4FB5-9A56-A6836004E324}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76B7B428-FBD1-4FB5-9A56-A6836004E324}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,7 +87,6 @@ Global
 		{819DD553-164E-4A94-826C-01D2424DC20E} = {0CD414B3-ED1A-493A-9D8B-A2C2ECF1EE60}
 		{3F869420-044F-4D14-9C01-E87E3EFB6FB1} = {0CD414B3-ED1A-493A-9D8B-A2C2ECF1EE60}
 		{592FAFEE-1123-4D8F-BA5D-8EBAE514B243} = {0CD414B3-ED1A-493A-9D8B-A2C2ECF1EE60}
-		{9951BA46-5A4D-4283-8083-4ACEDEB01714} = {519BD68B-5A94-42F0-BC2A-C8E5ABA52F5E}
 		{0387B76E-0CD9-41C3-B125-5AC782A4355B} = {D386DD5D-8704-4B11-A79F-4C960855F69D}
 		{44572956-D9F9-488D-A159-EF49D3E88A32} = {819DD553-164E-4A94-826C-01D2424DC20E}
 		{F58C4DB8-871C-4A14-9A17-6756628983B8} = {3F869420-044F-4D14-9C01-E87E3EFB6FB1}
@@ -104,7 +95,6 @@ Global
 		{96A48612-7050-4A02-A3CA-0C39FB190C15} = {3C52ED54-3FCA-453F-B5FF-F81DA9E2A651}
 		{A592FF35-01F1-4191-979A-34E3DFCEDE2F} = {3C52ED54-3FCA-453F-B5FF-F81DA9E2A651}
 		{2DA5E73F-B0A1-4CE5-8FB7-DBDE25B09742} = {3C52ED54-3FCA-453F-B5FF-F81DA9E2A651}
-		{76B7B428-FBD1-4FB5-9A56-A6836004E324} = {9951BA46-5A4D-4283-8083-4ACEDEB01714}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B24F8278-D6CE-4386-B0CC-0EE33533065D}

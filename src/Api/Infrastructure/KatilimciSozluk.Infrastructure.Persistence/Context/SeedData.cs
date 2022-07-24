@@ -34,7 +34,7 @@ namespace KatilimciSozluk.Api.Infrastructure.Persistence.Context
         public async Task SeedAsync(IConfiguration configuration)
         {
             var dbContextBuilder = new DbContextOptionsBuilder();
-            dbContextBuilder.UseSqlServer(@"Server=(localdb)\ProjectsV13;Initial Catalog=KatilimciSozlukDb;Persist Security Info=True;");
+            dbContextBuilder.UseSqlServer(configuration.GetConnectionString("KatilimciSozlukDb"));
 
             var context = new KatilimciSozlukContext(dbContextBuilder.Options);
 

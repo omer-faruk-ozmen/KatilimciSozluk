@@ -15,7 +15,7 @@ public class ValidateModelStateFilter : IAsyncActionFilter
                                                     .Distinct().ToList();
 
 
-            var result = new ValidationResponseModel(messages);
+            var result = new ValidationResponseModel(messages!);
             context.Result = new BadRequestObjectResult(result);
             return ;
         }

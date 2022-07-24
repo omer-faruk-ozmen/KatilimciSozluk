@@ -170,10 +170,10 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
 
     public virtual Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, bool noTracking = true, params Expression<Func<TEntity, object>>[] includes)
     {
-        return Get(predicate, noTracking, includes).FirstOrDefaultAsync();
+        return Get(predicate, noTracking, includes).FirstOrDefaultAsync()!;
     }
 
-    public virtual async Task<List<TEntity>> GetList(Expression<Func<TEntity, bool>> predicate, bool noTracking = true, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, params Expression<Func<TEntity, object>>[] includes)
+    public virtual async Task<List<TEntity>> GetList(Expression<Func<TEntity, bool>> predicate, bool noTracking = true, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null!, params Expression<Func<TEntity, object>>[] includes)
     {
         IQueryable<TEntity> query = entity;
 
@@ -208,17 +208,17 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
 
     public virtual async Task<TEntity> GetByIdAsync(Guid id, bool noTracking = true, params Expression<Func<TEntity, object>>[] includes)
     {
-        TEntity found = await entity.FindAsync(id);
+        TEntity found = (await entity.FindAsync(id))!;
 
         if (found == null)
-            return null;
+            return null!;
 
         if (noTracking)
             dbContext.Entry(found).State = EntityState.Detached;
 
         foreach (Expression<Func<TEntity, object>> include in includes)
         {
-            dbContext.Entry(found).Reference(include).Load();
+            dbContext.Entry(found).Reference(include!).Load();
         }
 
         return found;
@@ -238,7 +238,7 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
         if (noTracking)
             query = query.AsNoTracking();
 
-        return await query.SingleOrDefaultAsync();
+        return (await query.SingleOrDefaultAsync())!;
 
     }
 
@@ -275,7 +275,7 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
         if (entities != null && !entities.Any())
             return Task.CompletedTask;
 
-        foreach (var entityItem in entities)
+        foreach (var entityItem in entities!)
         {
             entity.Update(entityItem);
         }
@@ -283,7 +283,7 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
         return dbContext.SaveChangesAsync();
     }
 
-    public virtual async Task BulkAdd(IEnumerable<TEntity> entities)
+    public virtual async Task BulkAdd(IEnumerable<TEntity>? entities)
     {
         if (entities != null && !entities.Any())
             await Task.CompletedTask;
