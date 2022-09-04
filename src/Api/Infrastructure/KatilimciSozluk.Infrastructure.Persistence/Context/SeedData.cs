@@ -12,9 +12,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace KatilimciSozluk.Api.Infrastructure.Persistence.Context
 {
-    internal class SeedData
+    public class SeedData
     {
-        private static List<User> GetUsers()
+        public static List<User> GetUsers()
         {
             var result = new Faker<User>("tr")
                 .RuleFor(i => i.Id, i => Guid.NewGuid())
@@ -34,7 +34,8 @@ namespace KatilimciSozluk.Api.Infrastructure.Persistence.Context
         public async Task SeedAsync(IConfiguration configuration)
         {
             var dbContextBuilder = new DbContextOptionsBuilder();
-            dbContextBuilder.UseSqlServer(configuration.GetConnectionString("KatilimciSozlukDb"));
+            var connStr = configuration.GetConnectionString("KatilimciSozlukDb");
+            dbContextBuilder.UseSqlServer(connectionString: connStr);
 
             var context = new KatilimciSozlukContext(dbContextBuilder.Options);
 

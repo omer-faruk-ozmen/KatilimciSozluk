@@ -41,9 +41,9 @@ public class KatilimciSozlukContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-             
-            var connStr = _configuration.GetConnectionString("KatilimciSozlukDb");
-            optionsBuilder.UseSqlServer(connStr, opt =>
+
+
+            optionsBuilder.UseSqlServer(connectionString: _configuration.GetConnectionString("KatilimciSozlukDb"), opt =>
             {
                 opt.EnableRetryOnFailure();
             });

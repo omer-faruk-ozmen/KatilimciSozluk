@@ -18,8 +18,9 @@ public static class Registration
     {
         services.AddDbContext<KatilimciSozlukContext>(conf =>
         {
+            var connStr = configuration.GetConnectionString("KatilimciSozlukDb");
            
-            conf.UseSqlServer(configuration.GetConnectionString("KatilimciSozlukDb"), opt =>
+            conf.UseSqlServer(connectionString: connStr, opt =>
             {
                 opt.EnableRetryOnFailure();
             });

@@ -14,10 +14,10 @@ namespace KatilimciSozluk.Api.Application.Features.Commands.Entry.DeleteFav
     {
         public async Task<bool> Handle(DeleteEntryFavCommand request, CancellationToken cancellationToken)
         {
-            QueueFactory.SendMessageToExchange(exchangeName:KatilimciSozlukConstants.FavExchangeName,
-                exchangeType:KatilimciSozlukConstants.DefaultExchangeType,
-                queueName:KatilimciSozlukConstants.DeleteEntryFavQueueName,
-                obj:new DeleteEntryFavEvent()
+            QueueFactory.SendMessageToExchange(exchangeName: KatilimciSozlukConstants.FavExchangeName,
+                exchangeType: KatilimciSozlukConstants.DefaultExchangeType,
+                queueName: KatilimciSozlukConstants.DeleteEntryFavQueueName,
+                obj: new DeleteEntryFavEvent()
                 {
                     EntryId = request.EntryId,
                     CreatedBy = request.UserId

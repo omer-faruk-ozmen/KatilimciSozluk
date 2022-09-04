@@ -62,6 +62,15 @@ namespace KatilimciSozluk.Api.WebApi.Controllers
             return Ok(guid);
         }
 
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> DeleteUser([FromBody] DeleteUserCommand command)
+        {
+            var result = await mediator.Send(command);
+
+            return Ok(result);
+        }
+
         [HttpPost]
         [Route("Confirm")]
         public async Task<IActionResult> ConfirmEmail(Guid id)

@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace KatilimciSozluk.Api.Application.Features.Queries.GetEntryComments
 {
 
-    internal class GetEntryCommentsQueryHandler : IRequestHandler<GetEntryCommentsQuery, PagedViewModel<GetEntryCommentsViewModel>>
+    public class GetEntryCommentsQueryHandler : IRequestHandler<GetEntryCommentsQuery, PagedViewModel<GetEntryCommentsViewModel>>
     {
 
         private readonly IEntryCommentRepository entryCommentRepository;
